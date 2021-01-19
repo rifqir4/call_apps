@@ -37,11 +37,7 @@ public class EpsonActivity extends Activity implements View.OnClickListener, Rec
     private static final int DISCONNECT_INTERVAL = 500;//millseconds
 
     private Context mContext = null;
-    public static EditText mEditTarget = null;
-    public static Spinner mSpnSeries = null;
-    public static Spinner mSpnLang = null;
     public static Printer  mPrinter = null;
-    public static ToggleButton mDrawer = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

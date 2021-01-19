@@ -38,6 +38,8 @@ public class MainActivity extends FlutterActivity implements MethodCallHandler {
     private String CHANNEL = "android_channel";
     private MethodChannel mChannel = null;
 
+    private MethodChannel.Result mResult = null;
+
     @Override
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
         super.configureFlutterEngine(flutterEngine);
@@ -60,13 +62,26 @@ public class MainActivity extends FlutterActivity implements MethodCallHandler {
             Intent intent = new Intent(this, DisocverActivity.class);
             startActivityForResult(intent, 0);
         } else if (call.method.equals("printReceipt")) {
-            Intent intent = new Intent(this, EpsonActivity.class);
-            startActivityForResult(intent, 0);
+            this.mResult = result;
+            Intent intent = new Intent(this, PrintActivity.class);
+            startActivityForResult(intent, 123);
         } else if(call.method.equals("callWithArgs")) {
             String test = (String) args.get("test");
             result.success("This is test: " + test );
         } else {
             result.notImplemented();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode == RESULT_OK){
+            if(requestCode == 123){
+                String res = data.getStringExtra("printActivity");
+                mResult.success(res);
+            }
         }
     }
 

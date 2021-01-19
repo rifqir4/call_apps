@@ -21,7 +21,7 @@ class CallNativeHandler {
   }
 
   static Future<dynamic> get printReceipt async {
-    var status = await _channel.invokeMethod('printReceipt');
+    String status = await _channel.invokeMethod('printReceipt');
     return status;
   }
 
