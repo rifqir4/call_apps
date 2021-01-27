@@ -140,28 +140,35 @@ public class EpsonActivity extends Activity implements View.OnClickListener, Rec
             method = "addTextSize";
             mPrinter.addTextSize(2, 2);
             method = "addText";
-            mPrinter.addText("TOKO\nSOLO MAKMUR\n");
+            mPrinter.addText("TOKO SOLO MAKMUR\n");
 
             method = "addTextSize";
             mPrinter.addTextSize(1, 1);
-            method = "addFeedLine";
-            mPrinter.addFeedLine(1);
-            textData.append("Agen Gas, Beras, dan\n");
-            textData.append("Minuman Kemasan\n\n");
-            textData.append("Jl. Kasuari Raya No. 256 Perumnas 1, Kayurungin Jaya, Bekasi Selatan, Kota Bekasi, 17144\n");
-            textData.append("Telp. 021-8868068\n");
-            textData.append("\n");
+
+            method = "addFont";
+            mPrinter.addTextFont(Printer.FONT_B);
+
+            textData.append("Beras, Galon, Minuman Kemasan dan Gas\n");
             method = "addText";
             mPrinter.addText(textData.toString());
             textData.delete(0, textData.length());
 
+            textData.append("Jl. Kasuari Raya No. 256 Perumnas 1,\nKayurungin Jaya, Bekasi Selatan,\nKota Bekasi, ");
+            textData.append("(021)8868068\n\n");
+            method = "addText";
+            mPrinter.addText(textData.toString());
+            textData.delete(0, textData.length());
+
+            method = "addFont";
+            mPrinter.addTextFont(Printer.FONT_A);
+
             method = "addTextAlign";
             mPrinter.addTextAlign(Printer.ALIGN_LEFT);
             textData.append(divider);
-            textData.append("Aqua Galon (Eceran)\n");
+            textData.append("Aqua Galon\n");
             textData.append(customJustify("3x @37.000", "101.000") + "\n\n");
 
-            textData.append("Raja Lele (Eceran)\n");
+            textData.append("Raja Lele\n");
             textData.append(customJustify("1x @50.000", "50.000") + "\n\n");
             mPrinter.addText(textData.toString());
             textData.delete(0, textData.length());
@@ -173,17 +180,10 @@ public class EpsonActivity extends Activity implements View.OnClickListener, Rec
             method = "addFeedLine";
             mPrinter.addFeedLine(1);
             method = "addText";
-            textData.append(divider);
-            textData.append("Alamat Pelanggan :\n");
-            textData.append("Jl. Piranha Atas\n");
-            textData.append("Keterangan :\n");
-            textData.append("Rifqi Radifan\n");
-            method = "addText";
-            mPrinter.addText(textData.toString());
-            textData.delete(0, textData.length());
+            mPrinter.addText(divider);
 
             method = "addFeedLine";
-            mPrinter.addFeedLine(1);
+            mPrinter.addFeedLine(2);
             method = "addTextAlign";
             mPrinter.addTextAlign(Printer.ALIGN_CENTER);
             method = "addText";

@@ -63,7 +63,7 @@ public class MainActivity extends FlutterActivity implements MethodCallHandler {
             startActivityForResult(intent, 0);
         } else if (call.method.equals("printReceipt")) {
             this.mResult = result;
-            Intent intent = new Intent(this, PrintActivity.class);
+            Intent intent = new Intent(this, EpsonActivity.class);
             startActivityForResult(intent, 123);
         } else if(call.method.equals("callWithArgs")) {
             String test = (String) args.get("test");
